@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv5ljjqdrgi8v"]
+
+[ext_resource type="Texture2D" uid="uid://dnox0lkv0uxqr" path="res://creer-un-jeu-sur-godot-facilement-assets-main/art/playerGrey_up1.png" id="1_5arnv"]
+[ext_resource type="Script" uid="uid://dgblhun8bmw31" path="res://player.gd" id="1_wss7u"]
+[ext_resource type="Texture2D" uid="uid://d2qar5utlc81v" path="res://creer-un-jeu-sur-godot-facilement-assets-main/art/playerGrey_up2.png" id="2_wss7u"]
+[ext_resource type="Texture2D" uid="uid://c5ct781dvchh0" path="res://creer-un-jeu-sur-godot-facilement-assets-main/art/playerGrey_walk1.png" id="3_cucgj"]
+[ext_resource type="Texture2D" uid="uid://cujogx3l7oqjx" path="res://creer-un-jeu-sur-godot-facilement-assets-main/art/playerGrey_walk2.png" id="4_anahk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3idgr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5arnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wss7u")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cucgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_anahk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ugyn4"]
+radius = 6.05563
+height = 18.1725
+
+[node name="Player" type="Area2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_wss7u")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3idgr")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0556335, -0.0862503)
+shape = SubResource("CapsuleShape2D_ugyn4")
